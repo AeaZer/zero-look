@@ -1,0 +1,17 @@
+Name: user.rpc
+ListenOn: 0.0.0.0:2234
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: user.rpc
+
+JwtAuth:
+  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+  AccessExpire: 31536000
+
+DB:
+  Host: 127.0.0.1
+  Port: 3306
+  Name: perf
+  User: root
+  Pass: root

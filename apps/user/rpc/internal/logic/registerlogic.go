@@ -4,27 +4,27 @@ import (
 	"context"
 
 	"github.com/zero-look/apps/user/rpc/internal/svc"
-	"github.com/zero-look/apps/user/rpc/rpc"
+	"github.com/zero-look/apps/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type PingLogic struct {
+type RegisterLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewPingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *PingLogic {
-	return &PingLogic{
+func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *RegisterLogic {
+	return &RegisterLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *PingLogic) Ping(in *rpc.Request) (*rpc.Response, error) {
+func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, error) {
 	// todo: add your logic here and delete this line
 
-	return &rpc.Response{}, nil
+	return &user.RegisterResp{}, nil
 }

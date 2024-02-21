@@ -16,7 +16,7 @@ import (
 // 业务系统编号
 const bizNumber = 1000
 
-var configFile = flag.String("f", "etc/api-api.yaml", "the config file")
+var configFile = flag.String("f", "etc/user.yaml", "the config file")
 
 func main() {
 	flag.Parse()

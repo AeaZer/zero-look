@@ -6,7 +6,7 @@ import (
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 
-	"git.tencent.com/perf.v3/hok-platform/pkg/errorx"
+	"github.com/zero-look/pkg/errorx"
 )
 
 func SetGlobalErrorHandler(bizNumber int) {

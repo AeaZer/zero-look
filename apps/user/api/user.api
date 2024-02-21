@@ -1,0 +1,22 @@
+syntax = "v1"
+
+info (
+	title: "perf rpc center"
+	desc:  "性能平台用户"
+)
+
+import (
+	"apis/user.api"
+)
+
+// no need login
+service user {
+	@doc "register"
+	@handler register
+	post /user/register (RegisterReq)
+
+	@doc "login"
+	@handler login
+	post /user/login (LoginReq) returns (LoginResp)
+}
+

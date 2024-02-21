@@ -1,0 +1,27 @@
+syntax = "v1"
+
+// 用户注册
+type (
+    RegisterReq {
+        UserID int64 `json:"user_id"`
+        StaffName string `json:"staff_name"`
+        Email string `json:"email"`
+        Password string `json:"password"`
+    }
+)
+
+// 用户登录
+type (
+    LoginReq {
+        StaffName string `json:"staff_name"`
+        Password string `json:"password"`
+    }
+    LoginResp {
+        UserID int64 `json:"user_id"`
+        Email string `json:"email"`
+        AccessToken string `json:"access_token"`
+        AccessExpire int64 `json:"access_expire"`
+        RefreshAfter int64 `json:"refresh_after"`
+    }
+)
+
