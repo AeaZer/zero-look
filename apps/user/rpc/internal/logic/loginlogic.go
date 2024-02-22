@@ -31,7 +31,7 @@ func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
 		return nil, err
 	}
 	if u == nil {
-		return nil, errors.New("rpc not exists")
+		return nil, errors.New("user not exists")
 	}
 	generateTokenLogic := NewGenerateTokenLogic(l.ctx, l.svcCtx)
 	token, err := generateTokenLogic.GenerateToken(&user.GenerateTokenReq{

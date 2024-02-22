@@ -104,7 +104,7 @@ services:
     restart: always
     entrypoint: "filebeat -e -strict.perms=false"
     volumes:
-      - ./deploy/filebeat/conf/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./deploy/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
       - /var/lib/docker/containers:/var/lib/docker/containers
     networks:
       - perf_net
