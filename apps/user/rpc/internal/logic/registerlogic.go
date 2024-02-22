@@ -3,10 +3,11 @@ package logic
 import (
 	"context"
 
-	"github.com/zero-look/apps/user/rpc/internal/svc"
-	"github.com/zero-look/apps/user/rpc/user"
-
 	"github.com/zeromicro/go-zero/core/logx"
+
+	"github.com/zero-look/apps/user/rpc/internal/svc"
+	zeroLookUser "github.com/zero-look/apps/user/rpc/models/user"
+	"github.com/zero-look/apps/user/rpc/user"
 )
 
 type RegisterLogic struct {
@@ -24,7 +25,16 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 }
 
 func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, error) {
-	// todo: add your logic here and delete this line
-
+	zUser := &zeroLookUser.User{
+		UserID:    in.UserID,
+		StaffName: in.StaffName,
+		Email:     in.Email,
+		Password:  in.Password,
+	}
+	err := l.svcCtx.DB.Save(zUser).Error
+	if err != nil {
+		logx.Error(err)
+		return nil, err
+	}
 	return &user.RegisterResp{}, nil
 }

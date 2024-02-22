@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"github.com/zero-look/apps/user/rpc/internal/svc"
-	perfUser "github.com/zero-look/apps/user/rpc/models/user"
+	zeroLookUser "github.com/zero-look/apps/user/rpc/models/user"
 	"github.com/zero-look/apps/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -26,7 +26,7 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 }
 
 func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
-	u, err := perfUser.FindOneForLogin(l.svcCtx.DB, in.GetStaffName(), in.GetPassword())
+	u, err := zeroLookUser.FindOneForLogin(l.svcCtx.DB, in.GetStaffName(), in.GetPassword())
 	if err != nil {
 		return nil, err
 	}
@@ -43,6 +43,7 @@ func (l *LoginLogic) Login(in *user.LoginReq) (*user.LoginResp, error) {
 	return &user.LoginResp{
 		UserID:       u.UserID,
 		StaffName:    u.StaffName,
+		Email:        u.Email,
 		AccessToken:  token.AccessToken,
 		AccessExpire: token.AccessExpire,
 		RefreshAfter: token.RefreshAfter,
