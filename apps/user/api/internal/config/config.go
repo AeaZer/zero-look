@@ -5,9 +5,16 @@ import (
 	"github.com/zeromicro/go-zero/zrpc"
 )
 
+type SentryConf struct {
+	Dsn              string
+	Debug            bool
+	AttachStacktrace bool
+}
+
 type Config struct {
 	rest.RestConf
-	JwtAuth struct {
+	SentryConf SentryConf
+	JwtAuth    struct {
 		AccessSecret string
 	}
 
